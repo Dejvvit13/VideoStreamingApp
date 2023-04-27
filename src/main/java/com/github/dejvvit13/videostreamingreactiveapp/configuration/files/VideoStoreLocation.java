@@ -1,4 +1,4 @@
-package com.github.dejvvit13.videostreamingreactiveapp.configuration;
+package com.github.dejvvit13.videostreamingreactiveapp.configuration.files;
 
 public class VideoStoreLocation {
 

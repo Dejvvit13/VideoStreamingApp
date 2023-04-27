@@ -5,6 +5,6 @@ import reactor.core.publisher.Mono;
 
 public interface StreamingService {
 
-    Mono<Resource> getVideo(final String title, final String range);
+    Mono<Resource> getVideo(final String title);
 
 }

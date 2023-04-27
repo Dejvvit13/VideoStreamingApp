@@ -8,4 +8,11 @@ spring:
       password: rootpass
       authentication-database: admin
 
+  servlet:
+    request:
+      multipart:
+        max-file-size: 25MB
+        max-request-size: 25MB
+        enabled: true
+
 

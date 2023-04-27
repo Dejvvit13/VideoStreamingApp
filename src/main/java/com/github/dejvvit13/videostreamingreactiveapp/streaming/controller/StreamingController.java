@@ -9,16 +9,16 @@ import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/v1/video")
+@RequestMapping("/api/v1/streaming")
 @Slf4j
 public class StreamingController {
 
     private final StreamingServiceImpl streamingServiceImpl;
 
-    @GetMapping(value = "/{title}", produces = "video/mp4")
-    public Mono<Resource> getVideo(@PathVariable String title, @RequestHeader("Range") String range){
+    @GetMapping(value = "/{uuid}", produces = "video/mp4")
+    public Mono<Resource> getVideo(@PathVariable String uuid, @RequestHeader("Range") String range){
         System.out.println("range: " + range);
-        return streamingServiceImpl.getVideo(title, range);
+        return streamingServiceImpl.getVideo(uuid);
     }
 
 
