@@ -12,7 +12,7 @@ public record VideoCreateDto(String title, String description, FilePart file) {
                 .uuid(uuid)
                 .title(title)
                 .description(description)
-                .url("http://localhost:8080/api/v1/video" + uuid)
+                .url("http://localhost:8080/api/v1/streaming" + uuid)
                 .build();
     }
 
