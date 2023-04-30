@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.github.dejvvit13</groupId>
-    <artifactId>VideoStreamingReactiveApp</artifactId>
+    <artifactId>VideoStreamingApp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>VideoStreamingReactiveApp</name>
     <description>VideoStreamingReactiveApp</description>
@@ -19,11 +19,11 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>

@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
 @RestController
@@ -16,7 +15,7 @@ public class StreamingController {
     private final StreamingServiceImpl streamingServiceImpl;
 
     @GetMapping(value = "/{uuid}", produces = "video/mp4")
-    public Mono<Resource> getVideo(@PathVariable String uuid, @RequestHeader("Range") String range){
+    public Resource getVideo(@PathVariable String uuid, @RequestHeader(value = "Range",required =false) String range){
         System.out.println("range: " + range);
         return streamingServiceImpl.getVideo(uuid);
     }

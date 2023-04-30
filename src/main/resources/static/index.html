@@ -8,17 +8,22 @@
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
+
+<nav class="navbar">
+    <form class="container-fluid justify-content-start">
+        <img class="logo-img" src="images/video-camera.png" width="50" height="50" alt="logo">
+        <button class="btn btn-outline-success me-2" type="button"><a href="http://localhost:8080">Videos</a></button>
+        <button class="btn btn-sm btn-outline-secondary" type="button"><a href="https://github.com/Dejvvit13">Github</a>
+        </button>
+    </form>
+</nav>
+
 <main id="container">
-    <nav class="navbar">
-        <form class="container-fluid justify-content-start">
-            <img class="logo-img" src="images/video-camera.png" width="50" height="50" alt="logo">
-            <button class="btn btn-outline-success me-2" type="button"><a href="http://localhost:8080">Videos</a></button>
-            <button class="btn btn-sm btn-outline-secondary" type="button"><a href="https://github.com/Dejvvit13">Github</a></button>
-        </form>
-    </nav>
-    <div id="video-player">
-        <video width="640" height="360" src="http://localhost:8080/api/v1/streaming/edee54e5-cef6-45d6-87f0-b1fc6d7c1938" controls preload="none"></video>
+    <div id="player-header">
+        <h3 class="player-text player-text-info">Recent Videos</h3>
     </div>
+
+    <div id="video-player"></div>
 </main>
 </body>
 </html>

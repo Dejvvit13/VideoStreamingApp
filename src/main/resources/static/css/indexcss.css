@@ -7,8 +7,16 @@ body{
     height: 100vh;
     background-color: #002B5B;
 }
-#container nav{
+nav{
     background-color: #57C5B6;
+}
+#player-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 10vh;
 }
 #video-player{
     width: 100vw;
@@ -17,6 +25,12 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+.player-text{
+    color: white;
+}
+.player-text-info{
+    margin: 0 0 0 1%;
 }
 
 .btn{

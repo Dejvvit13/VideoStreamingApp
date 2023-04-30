@@ -9,11 +9,10 @@ spring:
       authentication-database: admin
 
   servlet:
-    request:
-      multipart:
-        max-file-size: 25MB
-        max-request-size: 25MB
-        enabled: true
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
 
 springdoc:
   show-actuator: true

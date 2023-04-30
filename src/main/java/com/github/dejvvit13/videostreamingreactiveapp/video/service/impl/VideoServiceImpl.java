@@ -1,27 +1,17 @@
 package com.github.dejvvit13.videostreamingreactiveapp.video.service.impl;
 
-import com.github.dejvvit13.videostreamingreactiveapp.configuration.exceptions.FileStoreException;
-import com.github.dejvvit13.videostreamingreactiveapp.configuration.files.VideoStoreLocation;
-import com.github.dejvvit13.videostreamingreactiveapp.video.model.document.Video;
 import com.github.dejvvit13.videostreamingreactiveapp.video.model.dto.VideoCreateDto;
 import com.github.dejvvit13.videostreamingreactiveapp.video.repository.VideoRepository;
 import com.github.dejvvit13.videostreamingreactiveapp.video.service.VideoService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
-import org.springframework.core.io.buffer.DataBuffer;
-import org.springframework.core.io.buffer.DataBufferUtils;
-import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.UUID;
 
 @Service
@@ -32,19 +22,23 @@ public class VideoServiceImpl implements VideoService {
     private final ResourceLoader resourceLoader;
 
 
-    public Mono<String> saveVideo(VideoCreateDto videoCreateDto) {
+    @Override
+    public String saveVideo(final VideoCreateDto videoCreateDto) {
         String uuid = UUID.randomUUID().toString();
-        storeVideo(videoCreateDto.file(), uuid);
-        return videoRepository.save(videoCreateDto.toVideo(uuid)).map(Video::getUuid);
+        storeVideoFile(videoCreateDto.file(), uuid);
+        videoRepository.save(videoCreateDto.toVideo(uuid));
+        return uuid;
     }
 
-    private Mono<Void> storeVideo(FilePart file, String uuid) {
-        File tempFile = new File("src/main/resources/videos/" + uuid + ".mp4");
+    private void storeVideoFile(final MultipartFile file, final String uuid) {
+        byte[] bytes = new byte[0];
         try {
-            tempFile.createNewFile();
+            bytes = file.getBytes();
+            Path path = Paths.get("src/main/resources/videos/" + uuid + ".mp4");
+            Files.write(path, bytes);
         } catch (IOException e) {
-            throw new FileStoreException("Can't create file: " + tempFile.getAbsolutePath());
+            throw new RuntimeException(e);
         }
-        return file.transferTo(tempFile);
+
     }
 }
