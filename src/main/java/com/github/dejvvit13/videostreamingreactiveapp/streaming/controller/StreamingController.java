@@ -14,10 +14,14 @@ public class StreamingController {
 
     private final StreamingServiceImpl streamingServiceImpl;
 
-    @GetMapping(value = "/{uuid}", produces = "video/mp4")
+    @GetMapping(value = "/videos/{uuid}", produces = "video/mp4")
     public Resource getVideo(@PathVariable String uuid, @RequestHeader(value = "Range",required =false) String range){
         System.out.println("range: " + range);
         return streamingServiceImpl.getVideo(uuid);
+    }
+    @GetMapping(value = "/images/{uuid}", produces = "image/png")
+    public Resource getImage(@PathVariable String uuid){
+        return streamingServiceImpl.getImage(uuid);
     }
 
 

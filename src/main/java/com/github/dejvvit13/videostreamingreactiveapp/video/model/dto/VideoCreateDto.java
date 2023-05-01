@@ -12,7 +12,8 @@ public record VideoCreateDto(String title, String description, MultipartFile fil
                 .uuid(uuid)
                 .title(title)
                 .description(description)
-                .url("http://localhost:8080/api/v1/streaming/" + uuid)
+                .imageUrl("http://localhost:8080/api/v1/streaming/images/" + uuid)
+                .videoUrl("http://localhost:8080/api/v1/streaming/videos/" + uuid)
                 .build();
     }
 
